@@ -1,0 +1,125 @@
+---
+import type { Category, Publisher } from '../types/game';
+
+interface Props {
+    categories: Category[];
+    publishers: Publisher[];
+}
+
+const { categories, publishers } = Astro.props;
+---
+
+<div
+    class="mb-6 bg-slate-800/60 backdrop-blur-sm rounded-xl border border-slate-700/50 p-6"
+    data-testid="game-filters"
+>
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-sm font-semibold text-slate-200">Filter games</h3>
+        <button
+            type="button"
+            id="clear-filters"
+            class="text-sm text-blue-400 hover:text-blue-300 focus:ring-2 focus:ring-blue-500 focus:outline-none rounded"
+            data-testid="clear-filters-button"
+        >
+            Clear filters
+        </button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <fieldset>
+            <legend class="text-sm font-medium text-slate-300 mb-2">Category</legend>
+            <div class="flex flex-wrap gap-x-4 gap-y-2">
+                {categories.map((category) => (
+                    <label class="inline-flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
+                        <input
+                            type="checkbox"
+                            value={category.id}
+                            data-filter-group="category"
+                            data-testid={`filter-category-${category.id}`}
+                            class="rounded border-slate-600 bg-slate-900 text-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        />
+                        {category.name}
+                    </label>
+                ))}
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="text-sm font-medium text-slate-300 mb-2">Publisher</legend>
+            <div class="flex flex-wrap gap-x-4 gap-y-2">
+                {publishers.map((publisher) => (
+                    <label class="inline-flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
+                        <input
+                            type="checkbox"
+                            value={publisher.id}
+                            data-filter-group="publisher"
+                            data-testid={`filter-publisher-${publisher.id}`}
+                            class="rounded border-slate-600 bg-slate-900 text-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        />
+                        {publisher.name}
+                    </label>
+                ))}
+            </div>
+        </fieldset>
+    </div>
+
+    <p class="sr-only" role="status" aria-live="polite" data-testid="filter-results-status"></p>
+</div>
+
+<script>
+    // Client-side filtering: the site is fully prerendered with no server to
+    // apply query params against, so all games render up front and matching
+    // is done here by comparing checkbox selections to each card's data attributes.
+    const categoryInputs = document.querySelectorAll('[data-filter-group="category"]');
+    const publisherInputs = document.querySelectorAll('[data-filter-group="publisher"]');
+    const clearButton = document.getElementById('clear-filters');
+    const statusEl = document.querySelector('[data-testid="filter-results-status"]');
+    const grid = document.querySelector('[data-testid="games-grid"]');
+    const filteredEmptyState = document.querySelector('[data-testid="filtered-empty-state"]');
+
+    function selectedValues(inputs: NodeListOf<Element>): Set<string> {
+        const values = new Set<string>();
+        inputs.forEach((input) => {
+            if (input instanceof HTMLInputElement && input.checked) {
+                values.add(input.value);
+            }
+        });
+        return values;
+    }
+
+    function applyFilters(): void {
+        const selectedCategories = selectedValues(categoryInputs);
+        const selectedPublishers = selectedValues(publisherInputs);
+        const cards = document.querySelectorAll('[data-testid="game-card"]');
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+            if (!(card instanceof HTMLElement)) return;
+
+            const matchesCategory =
+                selectedCategories.size === 0 || selectedCategories.has(card.dataset.gameCategoryId ?? '');
+            const matchesPublisher =
+                selectedPublishers.size === 0 || selectedPublishers.has(card.dataset.gamePublisherId ?? '');
+            const isVisible = matchesCategory && matchesPublisher;
+
+            card.hidden = !isVisible;
+            if (isVisible) visibleCount += 1;
+        });
+
+        if (grid instanceof HTMLElement) grid.hidden = visibleCount === 0;
+        if (filteredEmptyState instanceof HTMLElement) filteredEmptyState.hidden = visibleCount !== 0;
+        if (statusEl) {
+            statusEl.textContent = `Showing ${visibleCount} of ${cards.length} games`;
+        }
+    }
+
+    categoryInputs.forEach((input) => input.addEventListener('change', applyFilters));
+    publisherInputs.forEach((input) => input.addEventListener('change', applyFilters));
+
+    clearButton?.addEventListener('click', () => {
+        [...categoryInputs, ...publisherInputs].forEach((input) => {
+            if (input instanceof HTMLInputElement) input.checked = false;
+        });
+        applyFilters();
+    });
+</script>

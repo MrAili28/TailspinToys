@@ -1,13 +1,16 @@
 ---
 interface Props {
     text?: string;
+    hidden?: boolean;
+    'data-testid'?: string;
 }
 
-const { text } = Astro.props;
+const { text, hidden = false, 'data-testid': testId = 'empty-state' } = Astro.props;
 ---
 
 <div
-    data-testid="empty-state"
+    data-testid={testId}
+    hidden={hidden}
     class="text-center py-12 bg-slate-800/50 backdrop-blur-sm rounded-xl border border-slate-700"
 >
     {text ? (

@@ -1,0 +1,92 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - button "Toggle menu" [ref=e6]
+      - link "Tailspin Toys" [ref=e10] [cursor=pointer]:
+        - /url: /
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - heading "Welcome to Tailspin Toys" [level=1] [ref=e15]
+        - paragraph [ref=e16]: Find your next game! And maybe even back one! Explore our collection!
+      - generic [ref=e17]:
+        - heading "Featured Games" [level=2] [ref=e18]
+        - generic [ref=e19]:
+          - generic [ref=e20]:
+            - heading "Filter games" [level=3] [ref=e21]
+            - button "Clear filters" [ref=e22]
+          - generic [ref=e23]:
+            - group "Category" [ref=e24]:
+              - generic [ref=e26]:
+                - generic [ref=e27] [cursor=pointer]:
+                  - checkbox "Action" [ref=e28]
+                  - text: Action
+                - generic [ref=e29] [cursor=pointer]:
+                  - checkbox "Adventure" [ref=e30]
+                  - text: Adventure
+                - generic [ref=e31] [cursor=pointer]:
+                  - checkbox "Puzzle" [checked] [active] [ref=e32]
+                  - text: Puzzle
+                - generic [ref=e33] [cursor=pointer]:
+                  - checkbox "Simulation" [ref=e34]
+                  - text: Simulation
+                - generic [ref=e35] [cursor=pointer]:
+                  - checkbox "Strategy" [ref=e36]
+                  - text: Strategy
+            - group "Publisher" [ref=e37]:
+              - generic [ref=e39]:
+                - generic [ref=e40] [cursor=pointer]:
+                  - checkbox "CodeForge Studios" [ref=e41]
+                  - text: CodeForge Studios
+                - generic [ref=e42] [cursor=pointer]:
+                  - checkbox "DevMasters Inc." [ref=e43]
+                  - text: DevMasters Inc.
+                - generic [ref=e44] [cursor=pointer]:
+                  - checkbox "GitHub Games" [ref=e45]
+                  - text: GitHub Games
+                - generic [ref=e46] [cursor=pointer]:
+                  - checkbox "Ops Interactive" [ref=e47]
+                  - text: Ops Interactive
+          - status [ref=e48]: Showing 4 of 21 games
+        - generic [ref=e49]:
+          - link "Bug Buster Brainteaser Puzzle GitHub Games Bug Buster Brainteaser tests your analytical skills with clever puzzles that simulate real-world debugging adventures. Mona empowers you to track down elusive bugs, transforming each challenge into a rewarding quest for clarity and efficiency. Support this game through our crowdfunding platform! View details" [ref=e63] [cursor=pointer]:
+            - /url: /game/7
+            - generic [ref=e66]:
+              - heading "Bug Buster Brainteaser" [level=3] [ref=e67]
+              - generic [ref=e68]:
+                - generic [ref=e69]: Puzzle
+                - generic [ref=e70]: GitHub Games
+              - paragraph [ref=e71]: Bug Buster Brainteaser tests your analytical skills with clever puzzles that simulate real-world debugging adventures. Mona empowers you to track down elusive bugs, transforming each challenge into a rewarding quest for clarity and efficiency. Support this game through our crowdfunding platform!
+              - generic [ref=e72]: View details
+          - link "Code Puzzle Chronicles Puzzle CodeForge Studios Code Puzzle Chronicles offers brain-teasing challenges that unravel cryptic algorithms and obscure debugging quests. Mona assists you through each twist, inviting coders to master logic puzzles inspired by real-world coding conundrums. Support this game through our crowdfunding platform! View details" [ref=e89] [cursor=pointer]:
+            - /url: /game/5
+            - generic [ref=e92]:
+              - heading "Code Puzzle Chronicles" [level=3] [ref=e93]
+              - generic [ref=e94]:
+                - generic [ref=e95]: Puzzle
+                - generic [ref=e96]: CodeForge Studios
+              - paragraph [ref=e97]: Code Puzzle Chronicles offers brain-teasing challenges that unravel cryptic algorithms and obscure debugging quests. Mona assists you through each twist, inviting coders to master logic puzzles inspired by real-world coding conundrums. Support this game through our crowdfunding platform!
+              - generic [ref=e98]: View details
+          - link "Merge Conflict Mystery Puzzle DevMasters Inc. Merge Conflict Mystery immerses you in a labyrinth of code merges where every puzzle piece is a potential breakthrough. With Mona helping decode errors, your task is to resolve conflicts and streamline integration across complex code branches. Support this game through our crowdfunding platform! View details" [ref=e180] [cursor=pointer]:
+            - /url: /game/6
+            - generic [ref=e183]:
+              - heading "Merge Conflict Mystery" [level=3] [ref=e184]
+              - generic [ref=e185]:
+                - generic [ref=e186]: Puzzle
+                - generic [ref=e187]: DevMasters Inc.
+              - paragraph [ref=e188]: Merge Conflict Mystery immerses you in a labyrinth of code merges where every puzzle piece is a potential breakthrough. With Mona helping decode errors, your task is to resolve conflicts and streamline integration across complex code branches. Support this game through our crowdfunding platform!
+              - generic [ref=e189]: View details
+          - link "Stack Trace Secrets Puzzle Ops Interactive Stack Trace Secrets invites you to decrypt layered error logs and reveal hidden insights within your code. With guidance from Mona, every error message becomes a clue in the puzzle of perfecting your software architecture. Support this game through our crowdfunding platform! View details" [ref=e271] [cursor=pointer]:
+            - /url: /game/8
+            - generic [ref=e274]:
+              - heading "Stack Trace Secrets" [level=3] [ref=e275]
+              - generic [ref=e276]:
+                - generic [ref=e277]: Puzzle
+                - generic [ref=e278]: Ops Interactive
+              - paragraph [ref=e279]: Stack Trace Secrets invites you to decrypt layered error logs and reveal hidden insights within your code. With guidance from Mona, every error message becomes a clue in the puzzle of perfecting your software architecture. Support this game through our crowdfunding platform!
+              - generic [ref=e280]: View details
+  - generic [ref=e325]:
+    - button [ref=e326]
+    - button [ref=e332]
+    - button [ref=e336]
+    - button [ref=e341]
